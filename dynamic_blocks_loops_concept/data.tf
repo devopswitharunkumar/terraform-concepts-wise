@@ -4,7 +4,7 @@ data "aws_ami" "ami_id_fetch" {
 
   filter {
     name   = "name"
-    values = ["Redhat-9-DevOps-Practice"] #if vale randomlyy changes we can give like ["Redhat-9-DevOps-*"]
+    values = ["Redhat-9-DevOps-Practice"] #if randomlyy changes we can give like ["Redhat-9-DevOps-*"]
   }
 
   filter {
@@ -19,8 +19,4 @@ data "aws_ami" "ami_id_fetch" {
 }
 
 
-data "aws_route53_zone" "zone_id" {
-  name         = var.Domain_name
-  private_zone = false
-}
 
