@@ -50,12 +50,21 @@ resource "aws_instance" "ec2-instance" {
   source      = "nginx.yaml"
   destination = "/home/ec2-user/nginx.yaml"
   }
-
+#remote-exec --> we have two inline and script 
   provisioner "remote-exec" {
     inline = [ 
       "sudo dnf install ansible -y",
       "ansible-playbook -i inventory.ini /home/ec2-user/nginx.yaml"
      ]
+    #  script = script="install.sh"
+  }
+
+  
+
+
+  provisioner "local-exec" {
+    when = destroy
+    command="echo deleting"
   }
 
 
